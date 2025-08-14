@@ -1,0 +1,11 @@
+{
+  "pickupOffsetDeg": 72.5,
+  "lcMode": "SoftRetard",
+  "lcHoldRpm": 7000,
+  "rpmMode": "HybridSmart",
+  "rpmSetpoint": 13000,
+  "shiftRpmRecommended": 9200,
+  "knock": { "fs": 1000, "fLow": 300, "fHigh": 800, "winMs": 25, "sens": 1.5 },
+  "gps": { "mode": "drag", "gateLat": -6.2, "gateLon": 106.8, "gateR": 8.0 },
+  "qs": { "minRpm": 4000, "baseCutMs": 65, "refractMs": 250, "forceN": 25 }
+}

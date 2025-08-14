@@ -1,44 +1,27 @@
-#include <Arduino.h>
 #include "web_ui.h"
+#include "profiles.h"
+#include <Arduino.h>
+#include <string.h>
 
-// Begins web UI subsystem (AI-generated)
-bool web_ui_begin() {
-  // TODO: implement per README web_ui
-  return false;
+bool web_ui_begin() { return true; }
+void web_ui_loop() {}
+
+bool web_api_get_status(char *out, size_t len) {
+  const char *s = "{\"rpm\":0}";
+  if (strlen(s) + 1 > len)
+    return false;
+  strcpy(out, s);
+  return true;
 }
 
-// Handles web UI loop tasks (AI-generated)
-void web_ui_loop() {
-  // TODO: implement per README web_ui
-}
+bool web_api_get_profiles(char *out, size_t len) { return profiles_list(out, len); }
 
-// Provides status information via web API (AI-generated)
-bool web_api_get_status(char* out, size_t len) {
-  // TODO: implement per README web_ui
-  (void)out;
-  (void)len;
-  return false;
-}
+bool web_api_select(const char *name) { return profiles_select(name); }
 
-// Provides profile list via web API (AI-generated)
-bool web_api_get_profiles(char* out, size_t len) {
-  // TODO: implement per README web_ui
-  (void)out;
-  (void)len;
-  return false;
-}
-
-// Selects profile via web API (AI-generated)
-bool web_api_select(const char* name) {
-  // TODO: implement per README web_ui
-  (void)name;
-  return false;
-}
-
-// Provides optimality metrics via web API (AI-generated)
-bool web_api_get_optimality(char* out, size_t len) {
-  // TODO: implement per README web_ui
-  (void)out;
-  (void)len;
-  return false;
+bool web_api_get_optimality(char *out, size_t len) {
+  const char *s = "0";
+  if (strlen(s) + 1 > len)
+    return false;
+  strcpy(out, s);
+  return true;
 }

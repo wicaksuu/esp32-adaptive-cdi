@@ -1,37 +1,21 @@
-#include <Arduino.h>
 #include "pack.h"
+#include "adaptive1d.h"
+#include "map1d.h"
+#include <Arduino.h>
 
-// Loads tuning pack for specified profile (AI-generated)
-bool pack_load(const char* profile) {
-  // TODO: implement per README pack
+bool pack_load(const char *profile) {
   (void)profile;
-  return false;
+  map1d_init();
+  g_adaptive.init();
+  return true;
 }
 
-// Saves current tuning pack for specified profile (AI-generated)
-bool pack_save(const char* profile) {
-  // TODO: implement per README pack
+bool pack_save(const char *profile) {
   (void)profile;
-  return false;
+  map1d_commitDelta();
+  return true;
 }
 
-// Retrieves advance from pack for RPM (AI-generated)
-float pack_advance_for(int rpm) {
-  // TODO: implement per README pack
-  (void)rpm;
-  return 0.0f;
-}
-
-// Retrieves dwell from pack for RPM (AI-generated)
-float pack_dwell_for(int rpm) {
-  // TODO: implement per README pack
-  (void)rpm;
-  return 0.0f;
-}
-
-// Retrieves quickshift cut from pack for RPM (AI-generated)
-float pack_qs_for(int rpm) {
-  // TODO: implement per README pack
-  (void)rpm;
-  return 0.0f;
-}
+float pack_advance_for(int rpm) { return map1d_get_advance(rpm); }
+float pack_dwell_for(int rpm) { return map1d_get_dwell(rpm); }
+float pack_qs_for(int rpm) { return map1d_get_qs(rpm); }

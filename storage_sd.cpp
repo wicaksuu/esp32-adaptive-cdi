@@ -1,22 +1,19 @@
-#include <Arduino.h>
 #include "storage_sd.h"
+#include <Arduino.h>
+#include <fstream>
+#include <sys/stat.h>
 
-// Initializes SD storage subsystem (AI-generated)
-bool storage_sd_init() {
-  // TODO: implement per README storage_sd
-  return false;
+bool storage_sd_init() { return true; }
+
+bool storage_log_run(const Sample &s) {
+  std::ofstream f("run.csv", std::ios::app);
+  if (!f.good())
+    return false;
+  f << s.ms << ',' << s.rpm << ',' << s.egt << ',' << s.cht << '\n';
+  return true;
 }
 
-// Logs runtime sample to storage (AI-generated)
-bool storage_log_run(const Sample& s) {
-  // TODO: implement per README storage_sd
-  (void)s;
-  return false;
-}
-
-// Checks if a path exists on storage (AI-generated)
-bool storage_exists(const char* path) {
-  // TODO: implement per README storage_sd
-  (void)path;
-  return false;
+bool storage_exists(const char *path) {
+  struct stat st;
+  return stat(path, &st) == 0;
 }

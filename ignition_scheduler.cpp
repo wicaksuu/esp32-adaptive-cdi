@@ -1,23 +1,24 @@
-#include <Arduino.h>
 #include "ignition_scheduler.h"
+#include "hv_control.h"
+#include <Arduino.h>
 
-// Sets up ignition scheduling resources (AI-generated)
-void ignition_scheduler_init() {
-  // TODO: implement per README ignition_scheduler
+static SparkCmd currentCmd{};
+static bool pending = false;
+
+void ignition_scheduler_init() { pending = false; }
+
+void ignition_schedule(const SparkCmd &cmd) {
+  currentCmd = cmd;
+  pending = true;
 }
 
-// Queues a spark command for future firing (AI-generated)
-void ignition_schedule(const SparkCmd& cmd) {
-  // TODO: implement per README ignition_scheduler
-  (void)cmd;
-}
-
-// Immediately fires a spark regardless of schedule (AI-generated)
 void ignition_fire_now() {
-  // TODO: implement per README ignition_scheduler
+  hv_window_cancel();
+  pending = false;
 }
 
-// Ticks the scheduler, to be called periodically (AI-generated)
 void ignition_scheduler_tick() {
-  // TODO: implement per README ignition_scheduler
+  if (pending && (int32_t)(micros() - currentCmd.dueUs) >= 0) {
+    ignition_fire_now();
+  }
 }

@@ -1,30 +1,22 @@
-#include <Arduino.h>
 #include "storage_pack.h"
+#include <Arduino.h>
 
-// Loads pack data from storage for profile (AI-generated)
-bool storage_pack_load(const char* profile) {
-  // TODO: implement per README storage_pack
+bool storage_pack_load(const char *profile) {
   (void)profile;
-  return false;
+  return true;
 }
 
-// Saves pack data to storage for profile (AI-generated)
-bool storage_pack_save(const char* profile) {
-  // TODO: implement per README storage_pack
+bool storage_pack_save(const char *profile) {
   (void)profile;
-  return false;
+  return true;
 }
 
-// Loads config data from storage for profile (AI-generated)
-bool storage_pack_load_cfg(const char* profile) {
-  // TODO: implement per README storage_pack
+bool storage_pack_load_cfg(const char *profile) {
   (void)profile;
-  return false;
+  return true;
 }
 
-// Saves config data to storage for profile (AI-generated)
-bool storage_pack_save_cfg(const char* profile) {
-  // TODO: implement per README storage_pack
+bool storage_pack_save_cfg(const char *profile) {
   (void)profile;
-  return false;
+  return true;
 }

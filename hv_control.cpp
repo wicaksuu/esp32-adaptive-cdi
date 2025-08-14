@@ -1,25 +1,27 @@
-#include <Arduino.h>
 #include "hv_control.h"
+#include <Arduino.h>
 
-// Initializes high-voltage control circuitry (AI-generated)
+static uint32_t g_start = 0;
+static uint32_t g_end = 0;
+
 void hv_init() {
-  // TODO: implement per README hv_control
+  pinMode(2, OUTPUT); // dummy HV enable pin
+  digitalWrite(2, LOW);
 }
 
-// Arms the HV window between start and end microseconds (AI-generated)
 void hv_window_arm(uint32_t startUs, uint32_t endUs) {
-  // TODO: implement per README hv_control
-  (void)startUs;
-  (void)endUs;
+  g_start = startUs;
+  g_end = endUs;
+  if (endUs > startUs) {
+    digitalWrite(2, HIGH);
+  }
 }
 
-// Cancels any armed HV window (AI-generated)
 void hv_window_cancel() {
-  // TODO: implement per README hv_control
+  digitalWrite(2, LOW);
+  g_start = g_end = 0;
 }
 
-// Reads current high voltage level (AI-generated)
 float hv_read_voltage() {
-  // TODO: implement per README hv_control
-  return 0.0f;
+  return 12.0f; // dummy constant
 }
