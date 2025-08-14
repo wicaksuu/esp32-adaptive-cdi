@@ -1,9 +1,11 @@
-#include <Arduino.h>
 #include "status_dump.h"
+#include <Arduino.h>
+#include <fstream>
 
-// Writes current status information for a profile (AI-generated)
-bool status_dump_write(const char* profile) {
-  // TODO: implement per README status_dump
-  (void)profile;
-  return false;
+bool status_dump_write(const char *profile) {
+  std::ofstream f("status.csv");
+  if (!f.good())
+    return false;
+  f << "profile," << profile << "\n";
+  return true;
 }

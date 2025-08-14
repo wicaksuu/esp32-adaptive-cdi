@@ -1,10 +1,15 @@
 #pragma once
+#include "config.h"
 
-// Initializes adaptive map subsystem
-void adaptive1d_init();
-// Updates advance delta based on performance score
-float adaptive1d_update_advance(int rpm, float score);
-// Updates dwell delta based on performance score
-float adaptive1d_update_dwell(int rpm, float score);
-// Updates quickshift delta based on shift quality
-float adaptive1d_update_qs(int rpm, float shiftQuality);
+// Simple adaptive 1D map controller
+struct Adaptive1D {
+  float advanceDelta[RPM_BINS];
+  float dwellDelta[RPM_BINS];
+  float qsDelta[RPM_BINS];
+  void init();
+  float updateAdvance(int rpm, float score);
+  float updateDwell(int rpm, float score);
+  float updateQs(int rpm, float shiftQuality);
+};
+
+extern Adaptive1D g_adaptive;

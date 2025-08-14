@@ -1,0 +1,6 @@
+.pio
+*.o
+*.bin
+*.elf
+build/
+/test/timing_sim/test_main

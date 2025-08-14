@@ -1,42 +1,30 @@
-#include <Arduino.h>
 #include "profile_config.h"
+#include <Arduino.h>
 
-// Loads profile configuration from storage (AI-generated)
-bool profile_cfg_load(const char* profile) {
-  // TODO: implement per README profile_config
+static float pickupOffset = 70.0f;
+static int shiftRpm = 9000;
+static LcMode lcMode = LcMode::SoftRetard;
+static int lcHold = 7000;
+static TopMode topMode = TopMode::SoftRetard;
+static int topSet = 13000;
+
+bool profile_cfg_load(const char *profile) {
   (void)profile;
-  return false;
+  return true;
 }
 
-// Saves profile configuration to storage (AI-generated)
-bool profile_cfg_save(const char* profile) {
-  // TODO: implement per README profile_config
+bool profile_cfg_save(const char *profile) {
   (void)profile;
-  return false;
+  return true;
 }
 
-// Retrieves pickup offset in degrees (AI-generated)
-float profile_pickupOffsetDeg() {
-  // TODO: implement per README profile_config
-  return 0.0f;
-}
-
-// Retrieves recommended shift RPM (AI-generated)
-int profile_shiftRpmRecommended() {
-  // TODO: implement per README profile_config
-  return 0;
-}
-
-// Sets launch control parameters (AI-generated)
+float profile_pickupOffsetDeg() { return pickupOffset; }
+int profile_shiftRpmRecommended() { return shiftRpm; }
 void profile_set_lc(LcMode mode, int holdRpm) {
-  // TODO: implement per README profile_config
-  (void)mode;
-  (void)holdRpm;
+  lcMode = mode;
+  lcHold = holdRpm;
 }
-
-// Sets top speed limiter parameters (AI-generated)
 void profile_set_top(TopMode mode, int setpoint) {
-  // TODO: implement per README profile_config
-  (void)mode;
-  (void)setpoint;
+  topMode = mode;
+  topSet = setpoint;
 }

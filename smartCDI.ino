@@ -1,14 +1,14 @@
-#include <Arduino.h>
-#include "config.h"
-#include "types.h"
-#include "trigger_capture.h"
-#include "ignition_scheduler.h"
-#include "hv_control.h"
 #include "adaptive_engine.h"
+#include "config.h"
+#include "hv_control.h"
+#include "ignition_scheduler.h"
 #include "limiter.h"
 #include "profiles.h"
 #include "storage_sd.h"
+#include "trigger_capture.h"
+#include "types.h"
 #include "web_ui.h"
+#include <Arduino.h>
 
 // Arduino setup routine initializing subsystems (AI-generated)
 void setup() {

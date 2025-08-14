@@ -1,23 +1,22 @@
-#include <Arduino.h>
 #include "profiles.h"
+#include <Arduino.h>
+#include <string.h>
 
-// Returns currently active profile name (AI-generated)
-const char* profiles_active() {
-  // TODO: implement per README profiles
-  return nullptr;
+static const char *active = "harian";
+
+const char *profiles_active() { return active; }
+
+bool profiles_list(char *outBuf, size_t len) {
+  const char *names = "harian,200,400,500,1000";
+  if (strlen(names) + 1 > len)
+    return false;
+  strcpy(outBuf, names);
+  return true;
 }
 
-// Lists available profiles into buffer (AI-generated)
-bool profiles_list(char* outBuf, size_t len) {
-  // TODO: implement per README profiles
-  (void)outBuf;
-  (void)len;
-  return false;
-}
-
-// Selects a profile by name (AI-generated)
-bool profiles_select(const char* name) {
-  // TODO: implement per README profiles
-  (void)name;
-  return false;
+bool profiles_select(const char *name) {
+  if (!name)
+    return false;
+  active = name;
+  return true;
 }
