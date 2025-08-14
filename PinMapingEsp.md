@@ -44,5 +44,22 @@
 *(Catatan: gunakan custom I2C pins karena SDA default di GPIO 21 digunakan untuk backlight)*  
 
 ## 9. TX/RX Serial (P1 Connector)
-- **TX**: GPIO 1  
-- **RX**: GPIO 3  
+- **TX**: GPIO 1
+- **RX**: GPIO 3
+
+## 10. Sensor Tambahan (Adaptive CDI)
+
+| Sensor / Modul                                    | Pin ESP32         | Keterangan                                                                 |
+| ------------------------------------------------- | ----------------- | -------------------------------------------------------------------------- |
+| Pulsar pickup (Hall/VR)                           | GPIO 35           | Input posisi crank & sumber RPM                                            |
+| Quickshifter load-cell HX711 (DT)                 | GPIO 27           | Data load-cell untuk QS                                                    |
+| Quickshifter load-cell HX711 (SCK)                | GPIO 22           | Clock load-cell untuk QS                                                   |
+| I2C sensor (IMU, lingkungan, ADC ekst.) – SDA     | GPIO 27           | Jalur data bus I2C bersama                                                 |
+| I2C sensor (IMU, lingkungan, ADC ekst.) – SCL     | GPIO 22           | Jalur clock bus I2C bersama                                                |
+| EGT (ADC)                                         | GPIO 34           | Sensor suhu exhaust via ADC                                                |
+| CHT (ADC)                                         | GPIO 36*          | Sensor suhu head; *butuh pin alternatif jika IRQ touchscreen aktif*        |
+| GPS module (UART2 TX/RX)                          | GPIO 16 / GPIO 17 | Serial untuk GPS, gunakan jika LED hijau/biru tidak dipakai                |
+| Clutch switch                                     | GPIO 4**          | Saklar kopling; **aktif low jika LED merah dilepas**                       |
+| HV voltage sense                                  | GPIO 39***        | Monitor tegangan HV; ***pindah MISO touchscreen bila perlu***              |
+
+> *Penjelasan pin dan fungsinya dihasilkan otomatis oleh AI.*
